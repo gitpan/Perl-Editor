@@ -1,5 +1,5 @@
 name: Perl-Editor
-version: 0.01
+version: 0.02
 abstract: The Perl Refactoring Editor API
 author: Adam Kennedy <cpan@ali.as>
 license: perl
@@ -9,7 +9,9 @@ build_requires:
   File::Spec: 0.80
 requires:
   perl: 5.005
-  PPI: 0.993
+  Carp: 0
+  Class::Inspector: 1.06
+  Params::Util: 0.05
   Module::Pluggable: 2.2
 no_index:
   directory:

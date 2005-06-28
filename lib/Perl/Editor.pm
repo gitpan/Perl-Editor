@@ -42,12 +42,57 @@ Yeah, that too. :)
 =cut
 
 use strict;
-use PPI;
-use Module::Pluggable;
+use Carp ();
+use Params::Util '_INSTANCE',
+                 '_HASH';
+use Perl::Editor::Action;
+use Module::Pluggable require => 1;
 
 use vars qw{$VERSION};
 BEGIN {
-	$VERSION = '0.01';
+	$VERSION = '0.02';
+}
+
+# Data Storage
+my @ACTIONS = ();
+
+# Init all the plugins
+foreach my $plugin ( __PACKAGE__->plugins ) {
+	$plugin->init;
+}
+
+
+
+
+
+#####################################################################
+# Plugin API
+
+# Add an action
+sub register_action {
+	my $class  = shift;
+
+	# Create the Action
+	my $Action = _HASH($_[0])
+		? Perl::Editor::Action->new( %{$_[0]} )
+		: Perl::Editor::Action->new( @_ );
+	if ( _INSTANCE($Action, 'Perl::Editor::Action') ) {
+		push @ACTIONS, $Action;
+		return 1;
+	}
+	Carp::croak( $Action || 'Failed to add Action: Unknown error' );
+}
+
+
+
+
+
+#####################################################################
+# Editor API
+
+# Get the list of Actions
+sub actions {
+	@ACTIONS;
 }
 
 1;

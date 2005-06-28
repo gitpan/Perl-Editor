@@ -6,8 +6,10 @@ author        ( 'Adam Kennedy <cpan@ali.as>'   );
 version_from  ( 'lib/Perl/Editor.pm'           );
 license       ( 'perl'                         );
 requires      ( 'perl'              => '5.005' );
-requires      ( 'PPI'               => '0.993' );
-requires      ( 'Module::Pluggable' => '2.2'   );
+requires      ( 'Carp'              => 0       );
+requires      ( 'Class::Inspector'  => '1.06'  );
+requires      ( 'Params::Util'      => '0.05'  );
+requires      ( 'Module::Pluggable' => '2.2'   );    
 build_requires( 'Test::More'        => '0.47'  );
 build_requires( 'File::Spec'        => '0.80'  );
 

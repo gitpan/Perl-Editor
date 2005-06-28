@@ -1,4 +1,8 @@
 Revision history for Perl extension Perl::Editor
 
+0.02 Tue 28 Jun 2005
+	- Fleshed out the first implementation, which only
+	  supports a single type of task, an "Action".
+
 0.01 Mon 27 Jun 2005
 	- Created the initial implementation
